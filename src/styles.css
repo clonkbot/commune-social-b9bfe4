@@ -1,0 +1,243 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --cream: #f5f2eb;
+  --charcoal: #0f0f0f;
+  --vermillion: #e63946;
+  --muted: #8a8576;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--cream);
+  color: var(--charcoal);
+}
+
+/* Custom color classes */
+.bg-cream {
+  background-color: var(--cream);
+}
+
+.bg-charcoal {
+  background-color: var(--charcoal);
+}
+
+.bg-vermillion {
+  background-color: var(--vermillion);
+}
+
+.text-cream {
+  color: var(--cream);
+}
+
+.text-charcoal {
+  color: var(--charcoal);
+}
+
+.text-vermillion {
+  color: var(--vermillion);
+}
+
+.border-vermillion {
+  border-color: var(--vermillion);
+}
+
+.hover\:text-vermillion:hover {
+  color: var(--vermillion);
+}
+
+.hover\:border-vermillion:hover {
+  border-color: var(--vermillion);
+}
+
+.hover\:bg-vermillion:hover {
+  background-color: var(--vermillion);
+}
+
+.hover\:bg-vermillion\/90:hover {
+  background-color: rgba(230, 57, 70, 0.9);
+}
+
+/* Typography */
+.font-display {
+  font-family: 'Playfair Display', serif;
+}
+
+.font-body {
+  font-family: 'Libre Franklin', sans-serif;
+}
+
+/* Grain overlay */
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1000;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 0.5s ease-out forwards;
+}
+
+.animate-pulse-once {
+  animation: pulse 0.3s ease-out;
+}
+
+/* Staggered animations */
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }
+.stagger-5 { animation-delay: 0.5s; }
+
+/* Post card hover effect */
+.post-card {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.post-card:hover {
+  transform: translateX(4px);
+}
+
+.post-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background-color: transparent;
+  transition: background-color 0.3s ease;
+}
+
+.post-card:hover::before {
+  background-color: var(--vermillion);
+}
+
+/* Like button animation */
+.like-button {
+  transition: all 0.2s ease;
+}
+
+.like-button:active {
+  transform: scale(0.9);
+}
+
+.like-button.liked svg {
+  fill: var(--vermillion);
+  stroke: var(--vermillion);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--cream);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(15, 15, 15, 0.2);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(15, 15, 15, 0.4);
+}
+
+/* Selection */
+::selection {
+  background-color: var(--vermillion);
+  color: var(--cream);
+}
+
+/* Focus states */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--vermillion);
+  outline-offset: 2px;
+}
+
+/* Image placeholders */
+.placeholder-architecture {
+  background: linear-gradient(135deg, #2d2d2d 0%, #4a4a4a 50%, #2d2d2d 100%);
+}
+
+.placeholder-fashion {
+  background: linear-gradient(135deg, #1a1a1a 0%, #3d3d3d 50%, #1a1a1a 100%);
+}
+
+.placeholder-travel {
+  background: linear-gradient(135deg, #3d3d3d 0%, #5a5a5a 50%, #3d3d3d 100%);
+}
+
+/* Textarea */
+textarea {
+  font-family: 'Libre Franklin', sans-serif;
+}
+
+/* Modal backdrop */
+.modal-backdrop {
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
